@@ -1,6 +1,6 @@
 ===============================================================
            Sistemas DistribuÃ­dos Prof. Elias
-          LOG do Trabalho PrÃ¡tico 0, Tarefa 1
+          LOG do Trabalho PrÃ¡tico 0, Tarefa 3
       Digitar, compilar e executar o programa tempo.c
    Este programa foi executado para: N=3 processos.
            Tempo Total de SimulaÃ§Ã£o = 150
