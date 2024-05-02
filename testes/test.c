@@ -56,7 +56,7 @@ void c(int i, int s, int *v) {
 
 int main() {
 
-    int p=3;
+    int p=5;
     int *v = (int *)malloc(sizeof(int)*power(2, p));
 
     for (int i=0; i<power(2, p); i++) {
