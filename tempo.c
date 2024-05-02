@@ -19,7 +19,6 @@ typedef struct{
     int id;            // identificador de facility do SMPL
     int *state;
     int **old_state;
-    int s;
    // outras variÃ¡veis locais dos processos sÃ£o declaradas aqui!
 } TipoProcesso;
 
@@ -84,7 +83,7 @@ int main (int argc, char *argv[]) {
    static int N,   // nÃºmero de processos
             token,  // indica o processo que estÃ¡ executando
             event, r, i,
-            MaxTempoSimulac = 150;
+            MaxTempoSimulac = 250;
 
    static char fa_name[5];
 
@@ -121,7 +120,6 @@ int main (int argc, char *argv[]) {
             processo[i].old_state[j][k] = -1;
         processo[i].old_state[j][i] = 0;
         
-      processo[i].s = 1;
       }
 
    }
@@ -135,9 +133,11 @@ int main (int argc, char *argv[]) {
     for (i=0; i<N; i++) {
        schedule(test, 30.0, i); 
     }
-    schedule(fault, 31.0, 1);
-    schedule(fault, 32.0, 0);
-    schedule(recovery, 61.0, 1);
+    schedule(fault, 31.0, 0);
+    schedule(fault, 62.0, 1);
+    schedule(fault, 93.0, 2);
+    schedule(fault, 124.0, 3);
+    schedule(recovery, 151.0, 0);
 
     // agora vem o loop principal do simulador
 
@@ -151,7 +151,6 @@ int main (int argc, char *argv[]) {
     int max_s = 0;
     while (N > power(2, max_s))
         max_s++;
-    //max_s--;
 
     printf("max_s para N = %d eh %d\n", N, max_s);
 
@@ -160,7 +159,7 @@ int main (int argc, char *argv[]) {
     int *saida = (int *)malloc(sizeof(int)*N);
     int *testar = (int *)malloc(sizeof(int)*N);
 
-    while(time() < 150.0) {
+    while(time() < MaxTempoSimulac) {
          cause(&event, &token);
          switch(event) {
            case test: 
@@ -169,49 +168,50 @@ int main (int argc, char *argv[]) {
                 //printf("start %d\n", token);
                 for (int i=0; i<N; i++) {
                     if (i != token) {
-                        c(i, processo[token].s, saida);
-                        count = 0;
+                        for (int s=1; s<=max_s; s++) {
+                            c(i, s, saida);
+                            count = 0;
 
-                        //printf("P%d: c(%d, %d) = [", token, i, processo[token].s);
-                        //encontrando testador para o processo i
-                        while ((saida[count] != -2) && (processo[token].state[saida[count]] != 0)) {
-                        //    printf("%d, ", saida[count]);
-                            count++;
-                        }
-                        if (processo[token].state[saida[count]] == 0)
-                        //    printf("%d", saida[count]);
-                        //printf("]\n");
-                        if  (token == saida[count]) {
-                            //testa processo i
-                            st = status(processo[i].id);
-
-                            printf("O processo %d testou o processo %d ", token, i);
-                            if (st == 0) {
-                                //processo i verifica quais informações são novas e passa para o processo token
-                                printf("correto e adquire [");
-                                for (int j=0; j<N; j++) {
-                                    if ((processo[i].state[j] != processo[i].old_state[token][j]) &&
-                                        (j != token) && (j != i)) {
-                                        processo[token].state[j] = processo[i].state[j];
-                                        printf("%d, ", j);
-                                    }
-                                    //atualiza processo[i].old_state[token]
-                                    processo[i].old_state[token][j] = processo[i].state[j];
-                                }
-
-                                printf("] ");
+                            //printf("P%d: c(%d, %d) = [", token, i, s);
+                            //encontrando testador para o processo i
+                            while ((saida[count] != -2) && (processo[token].state[saida[count]] != 0)) {
+                                //printf("%d, ", saida[count]);
+                                count++;
                             }
-                            else if (st == 1)
-                                printf("falho ");
-                            else
-                                printf("desconhecido ");
+                            //if (processo[token].state[saida[count]] == 0)
+                            //    printf("%d", saida[count]);
+                            //printf("]\n");
+                            if  (token == saida[count]) {
+                                //testa processo i
+                                st = status(processo[i].id);
 
-                            printf("no tempo %4.1f\n", time());
-                            processo[token].state[i] = st;
+                                printf("O processo %d testou o processo %d ", token, i);
+                                if (st == 0) {
+                                    //processo i verifica quais informações são novas e passa para o processo token
+                                    printf("correto e adquire [");
+                                    for (int j=0; j<N; j++) {
+                                        if ((processo[i].state[j] != processo[i].old_state[token][j]) &&
+                                            (j != token) && (j != i)) {
+                                            processo[token].state[j] = processo[i].state[j];
+                                            printf("%d, ", j);
+                                        }
+                                        //atualiza processo[i].old_state[token]
+                                        processo[i].old_state[token][j] = processo[i].state[j];
+                                    }
+
+                                    printf("] ");
+                                }
+                                else if (st == 1)
+                                    printf("falho ");
+                                else
+                                    printf("desconhecido ");
+
+                                printf("no tempo %4.1f\n", time());
+                                processo[token].state[i] = st;
+                            }
                         }
                     }
                 }
-                processo[token].s = (processo[token].s % max_s) + 1;
                 schedule(test, 30.0, token);
                 break;
            case fault:
