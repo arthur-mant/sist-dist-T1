@@ -16,16 +16,14 @@
 // Vamos definir o descritor do processo
 
 typedef struct{ 
-    int id;            // identificador de facility do SMPL
-    int *state;
-    int **old_state;
-   // outras variÃ¡veis locais dos processos sÃ£o declaradas aqui!
+    int id;             // identificador de facility do SMPL
+    int *state;         // vetor de estados de cada outro processo
+    int **old_state;    // matriz que guarda último vetor state enviado a cada outro processo
 } TipoProcesso;
 
 TipoProcesso *processo;
 
-//funções auxiliares
-
+//função auxiliar de exponenciação
 int power(int b, int e) {
 
     int result = 1;
@@ -37,9 +35,12 @@ int power(int b, int e) {
 
 void c(int i, int s, int *v) {
 
+    //todo cluster de mesmo nível possui a mesma estrutura
+    //por isso se usará o equivalente mais simples, isto é, com os menores ids, do cluster analisado para encontrar o primeiro candidato a testador
+
     int aux = power(2, s);
     int highest_potency = 0;
-    //determinando o tamanho mínimo do cluster que contém esse id
+    //determinando a quantidade mínima de clusters às quais pertence esse processo esse id
     while (i > power(2, highest_potency))
         highest_potency++;
 
@@ -55,14 +56,14 @@ void c(int i, int s, int *v) {
         potencias = potencias/2;
     }
 
-    //tendo sua posição na árvore simplificada, usa o simétrico em relação cluster s para encontrar o primeiro testador
+    //tendo sua posição no cluster s equivalente de id mínimo, usa o simétrico em relação cluster s para encontrar o primeiro candidato a testador
     if (reduced_id < aux/2)
         pivo = i+aux/2;
     else
         pivo = i-aux/2;
 
     //aqui, damos o nome de pivô para o primeiro candidato a testador
-    //inicia-se nele, e percorre todos os id dentro do cluster s dele
+    //inicia-se nele, e percorre sequencialmente todos os id dentro do cluster s que ele pertence
 
     int j = pivo % (aux/2);
     int base = pivo - j;
@@ -83,7 +84,7 @@ int main (int argc, char *argv[]) {
    static int N,   // nÃºmero de processos
             token,  // indica o processo que estÃ¡ executando
             event, r, i,
-            MaxTempoSimulac = 250;
+            MaxTempoSimulac = 150;
 
    static char fa_name[5];
 
@@ -107,12 +108,14 @@ int main (int argc, char *argv[]) {
       sprintf(fa_name, "%d", i);
       processo[i].id = facility(fa_name,1);
 
+      //inicializa o vetor processo[i].state com -1 em todas as posições, exceto a q corresponde aos pŕoprios processo i, que inicia em 0
       processo[i].state = (int *) malloc(sizeof(int)*N);
       for (int j = 0; j<N; j++) {
         processo[i].state[j] = -1;
       }
       processo[i].state[i] = 0;
 
+      //inicializa a matriz processo[i].old_state com -1 em todas as posições, exceto as q correspondem aos pŕoprios processo i, que inicia em 0
       processo[i].old_state = (int **) malloc(sizeof(int *)*N);
       for (int j = 0; j<N; j++) {
         processo[i].old_state[j] = (int *) malloc(sizeof(int)*N);
@@ -133,11 +136,8 @@ int main (int argc, char *argv[]) {
     for (i=0; i<N; i++) {
        schedule(test, 30.0, i); 
     }
-    schedule(fault, 31.0, 0);
-    schedule(fault, 62.0, 1);
-    schedule(fault, 93.0, 2);
-    schedule(fault, 124.0, 3);
-    schedule(recovery, 151.0, 0);
+
+    schedule(fault, 61.0, 0);
 
     // agora vem o loop principal do simulador
 
@@ -148,11 +148,10 @@ int main (int argc, char *argv[]) {
     printf("           Tempo Total de SimulaÃ§Ã£o = %d\n", MaxTempoSimulac);
     puts("===============================================================");
 
+    //calcula quantidade de testes realizados por rodada de teste
     int max_s = 0;
     while (N > power(2, max_s))
         max_s++;
-
-    printf("max_s para N = %d eh %d\n", N, max_s);
 
     int count = 0;
     int st;
@@ -164,25 +163,19 @@ int main (int argc, char *argv[]) {
          switch(event) {
            case test: 
                 if (status(processo[token].id) !=0) break; // se o processo estÃ¡ falho, nÃ£o testa!
-
-                //printf("start %d\n", token);
                 for (int i=0; i<N; i++) {
                     if (i != token) {
                         for (int s=1; s<=max_s; s++) {
-                            c(i, s, saida);
+                            c(i, s, saida);     //calcula para cada processo i e cada nivel s sua ordem de testadores
                             count = 0;
-
-                            //printf("P%d: c(%d, %d) = [", token, i, s);
-                            //encontrando testador para o processo i
+                            
+                            //encontra o primeiro processo correto segundo a memória do processo atual
                             while ((saida[count] != -2) && (processo[token].state[saida[count]] != 0)) {
-                                //printf("%d, ", saida[count]);
                                 count++;
                             }
-                            //if (processo[token].state[saida[count]] == 0)
-                            //    printf("%d", saida[count]);
-                            //printf("]\n");
+
                             if  (token == saida[count]) {
-                                //testa processo i
+                                //se processo token testa processo i
                                 st = status(processo[i].id);
 
                                 printf("O processo %d testou o processo %d ", token, i);
@@ -207,6 +200,8 @@ int main (int argc, char *argv[]) {
                                     printf("desconhecido ");
 
                                 printf("no tempo %4.1f\n", time());
+
+                                //atualiza o valor do processo i no state do processo token
                                 processo[token].state[i] = st;
                             }
                         }

@@ -1,0 +1,177 @@
+===============================================================
+           Sistemas DistribuÃ­- Prof. Elias
+          LOG do Trabalho PrÃ¡tico 1
+   Este programa foi executado para: N=8 processos.
+           Tempo Total de SimulaÃ§Ã£o = 250
+===============================================================
+max_s para N = 8 eh 3
+O processo 0 testou o processo 1 correto e adquire [] no tempo 30.0
+O processo 0 testou o processo 2 correto e adquire [] no tempo 30.0
+O processo 0 testou o processo 4 correto e adquire [] no tempo 30.0
+O processo 0 testou o processo 7 correto e adquire [] no tempo 30.0
+O processo 1 testou o processo 0 correto e adquire [2, 4, 7, ] no tempo 30.0
+O processo 1 testou o processo 3 correto e adquire [] no tempo 30.0
+O processo 1 testou o processo 5 correto e adquire [] no tempo 30.0
+O processo 2 testou o processo 0 correto e adquire [1, 4, 7, ] no tempo 30.0
+O processo 2 testou o processo 1 correto e adquire [0, 3, 4, 5, 7, ] no tempo 30.0
+O processo 2 testou o processo 3 correto e adquire [] no tempo 30.0
+O processo 2 testou o processo 6 correto e adquire [] no tempo 30.0
+O processo 3 testou o processo 0 correto e adquire [1, 2, 4, 7, ] no tempo 30.0
+O processo 3 testou o processo 1 correto e adquire [0, 2, 4, 5, 7, ] no tempo 30.0
+O processo 3 testou o processo 2 correto e adquire [0, 1, 4, 5, 6, 7, ] no tempo 30.0
+O processo 3 testou o processo 7 correto e adquire [] no tempo 30.0
+O processo 4 testou o processo 0 correto e adquire [1, 2, 7, ] no tempo 30.0
+O processo 4 testou o processo 5 correto e adquire [] no tempo 30.0
+O processo 4 testou o processo 6 correto e adquire [] no tempo 30.0
+O processo 5 testou o processo 0 correto e adquire [1, 2, 4, 7, ] no tempo 30.0
+O processo 5 testou o processo 1 correto e adquire [0, 2, 3, 4, 7, ] no tempo 30.0
+O processo 5 testou o processo 4 correto e adquire [0, 1, 2, 6, 7, ] no tempo 30.0
+O processo 5 testou o processo 7 correto e adquire [] no tempo 30.0
+O processo 6 testou o processo 0 correto e adquire [1, 2, 4, 7, ] no tempo 30.0
+O processo 6 testou o processo 1 correto e adquire [0, 2, 3, 4, 5, 7, ] no tempo 30.0
+O processo 6 testou o processo 2 correto e adquire [0, 1, 3, 4, 5, 7, ] no tempo 30.0
+O processo 6 testou o processo 4 correto e adquire [0, 1, 2, 5, 7, ] no tempo 30.0
+O processo 6 testou o processo 7 correto e adquire [] no tempo 30.0
+O processo 7 testou o processo 0 correto e adquire [1, 2, 4, ] no tempo 30.0
+O processo 7 testou o processo 1 correto e adquire [0, 2, 3, 4, 5, ] no tempo 30.0
+O processo 7 testou o processo 2 correto e adquire [0, 1, 3, 4, 5, 6, ] no tempo 30.0
+O processo 7 testou o processo 3 correto e adquire [0, 1, 2, 4, 5, 6, ] no tempo 30.0
+O processo 7 testou o processo 5 correto e adquire [0, 1, 2, 3, 4, 6, ] no tempo 30.0
+O processo 7 testou o processo 6 correto e adquire [0, 1, 2, 3, 4, 5, ] no tempo 30.0
+Socooorro!!! Sou o processo 0  e estou falhando no tempo 31.0
+O processo 1 testou o processo 0 falho no tempo 60.0
+O processo 1 testou o processo 2 correto e adquire [0, 3, 4, 5, 6, 7, ] no tempo 60.0
+O processo 1 testou o processo 3 correto e adquire [0, 2, 4, 5, 6, 7, ] no tempo 60.0
+O processo 1 testou o processo 5 correto e adquire [0, 2, 3, 4, 6, 7, ] no tempo 60.0
+O processo 2 testou o processo 0 falho no tempo 60.0
+O processo 2 testou o processo 3 correto e adquire [0, 1, 4, 5, 6, 7, ] no tempo 60.0
+O processo 2 testou o processo 6 correto e adquire [0, 1, 3, 4, 5, 7, ] no tempo 60.0
+O processo 3 testou o processo 1 correto e adquire [6, ] no tempo 60.0
+O processo 3 testou o processo 2 correto e adquire [] no tempo 60.0
+O processo 3 testou o processo 7 correto e adquire [0, 1, 2, 4, 5, 6, ] no tempo 60.0
+O processo 4 testou o processo 0 falho no tempo 60.0
+O processo 4 testou o processo 5 correto e adquire [0, 1, 2, 3, 6, 7, ] no tempo 60.0
+O processo 4 testou o processo 6 correto e adquire [0, 1, 2, 3, 5, 7, ] no tempo 60.0
+O processo 5 testou o processo 1 correto e adquire [6, ] no tempo 60.0
+O processo 5 testou o processo 4 correto e adquire [3, ] no tempo 60.0
+O processo 5 testou o processo 7 correto e adquire [0, 1, 2, 3, 4, 6, ] no tempo 60.0
+O processo 6 testou o processo 2 correto e adquire [] no tempo 60.0
+O processo 6 testou o processo 4 correto e adquire [3, ] no tempo 60.0
+O processo 6 testou o processo 7 correto e adquire [0, 1, 2, 3, 4, 5, ] no tempo 60.0
+O processo 7 testou o processo 3 correto e adquire [] no tempo 60.0
+O processo 7 testou o processo 5 correto e adquire [] no tempo 60.0
+O processo 7 testou o processo 6 correto e adquire [] no tempo 60.0
+Socooorro!!! Sou o processo 1  e estou falhando no tempo 62.0
+O processo 2 testou o processo 0 falho no tempo 90.0
+O processo 2 testou o processo 3 correto e adquire [] no tempo 90.0
+O processo 2 testou o processo 6 correto e adquire [] no tempo 90.0
+O processo 3 testou o processo 1 falho no tempo 90.0
+O processo 3 testou o processo 2 correto e adquire [0, ] no tempo 90.0
+O processo 3 testou o processo 7 correto e adquire [] no tempo 90.0
+O processo 4 testou o processo 0 falho no tempo 90.0
+O processo 4 testou o processo 5 correto e adquire [] no tempo 90.0
+O processo 4 testou o processo 6 correto e adquire [] no tempo 90.0
+O processo 5 testou o processo 1 falho no tempo 90.0
+O processo 5 testou o processo 4 correto e adquire [0, ] no tempo 90.0
+O processo 5 testou o processo 7 correto e adquire [] no tempo 90.0
+O processo 6 testou o processo 2 correto e adquire [0, ] no tempo 90.0
+O processo 6 testou o processo 4 correto e adquire [0, ] no tempo 90.0
+O processo 6 testou o processo 7 correto e adquire [] no tempo 90.0
+O processo 7 testou o processo 3 correto e adquire [0, 1, ] no tempo 90.0
+O processo 7 testou o processo 5 correto e adquire [0, 1, ] no tempo 90.0
+O processo 7 testou o processo 6 correto e adquire [0, ] no tempo 90.0
+Socooorro!!! Sou o processo 2  e estou falhando no tempo 93.0
+O processo 3 testou o processo 1 falho no tempo 120.0
+O processo 3 testou o processo 2 falho no tempo 120.0
+O processo 3 testou o processo 4 correto e adquire [0, 1, 2, 5, 6, 7, ] no tempo 120.0
+O processo 3 testou o processo 7 correto e adquire [0, 1, ] no tempo 120.0
+O processo 4 testou o processo 0 falho no tempo 120.0
+O processo 4 testou o processo 5 correto e adquire [0, 1, ] no tempo 120.0
+O processo 4 testou o processo 6 correto e adquire [0, ] no tempo 120.0
+O processo 5 testou o processo 1 falho no tempo 120.0
+O processo 5 testou o processo 4 correto e adquire [1, ] no tempo 120.0
+O processo 5 testou o processo 7 correto e adquire [0, 1, ] no tempo 120.0
+O processo 6 testou o processo 2 falho no tempo 120.0
+O processo 6 testou o processo 4 correto e adquire [1, ] no tempo 120.0
+O processo 6 testou o processo 7 correto e adquire [0, 1, ] no tempo 120.0
+O processo 7 testou o processo 3 correto e adquire [] no tempo 120.0
+O processo 7 testou o processo 5 correto e adquire [] no tempo 120.0
+O processo 7 testou o processo 6 correto e adquire [1, 2, ] no tempo 120.0
+Socooorro!!! Sou o processo 3  e estou falhando no tempo 124.0
+O processo 4 testou o processo 0 falho no tempo 150.0
+O processo 4 testou o processo 5 correto e adquire [] no tempo 150.0
+O processo 4 testou o processo 6 correto e adquire [1, 2, ] no tempo 150.0
+O processo 5 testou o processo 1 falho no tempo 150.0
+O processo 5 testou o processo 4 correto e adquire [2, ] no tempo 150.0
+O processo 5 testou o processo 7 correto e adquire [2, ] no tempo 150.0
+O processo 6 testou o processo 2 falho no tempo 150.0
+O processo 6 testou o processo 4 correto e adquire [2, ] no tempo 150.0
+O processo 6 testou o processo 7 correto e adquire [2, ] no tempo 150.0
+O processo 7 testou o processo 3 falho no tempo 150.0
+O processo 7 testou o processo 5 correto e adquire [2, ] no tempo 150.0
+O processo 7 testou o processo 6 correto e adquire [] no tempo 150.0
+Viva!!! Sou o processo 0 e acabo de recuperar no tempo 151.0
+O processo 0 testou o processo 1 falho no tempo 152.0
+O processo 0 testou o processo 2 falho no tempo 152.0
+O processo 0 testou o processo 3 falho no tempo 152.0
+O processo 0 testou o processo 4 correto e adquire [1, 2, 3, 5, 6, 7, ] no tempo 152.0
+O processo 4 testou o processo 0 correto e adquire [1, 2, 3, 5, 6, ] no tempo 180.0
+O processo 4 testou o processo 5 correto e adquire [2, ] no tempo 180.0
+O processo 4 testou o processo 6 correto e adquire [] no tempo 180.0
+O processo 5 testou o processo 1 falho no tempo 180.0
+O processo 5 testou o processo 4 correto e adquire [0, ] no tempo 180.0
+O processo 5 testou o processo 7 correto e adquire [3, ] no tempo 180.0
+O processo 6 testou o processo 2 falho no tempo 180.0
+O processo 6 testou o processo 4 correto e adquire [0, ] no tempo 180.0
+O processo 6 testou o processo 7 correto e adquire [3, ] no tempo 180.0
+O processo 7 testou o processo 3 falho no tempo 180.0
+O processo 7 testou o processo 5 correto e adquire [0, 3, ] no tempo 180.0
+O processo 7 testou o processo 6 correto e adquire [0, 3, ] no tempo 180.0
+O processo 0 testou o processo 1 falho no tempo 182.0
+O processo 0 testou o processo 2 falho no tempo 182.0
+O processo 0 testou o processo 3 falho no tempo 182.0
+O processo 0 testou o processo 4 correto e adquire [] no tempo 182.0
+O processo 0 testou o processo 5 correto e adquire [1, 2, 3, 4, 6, 7, ] no tempo 182.0
+O processo 0 testou o processo 6 correto e adquire [1, 2, 3, 4, 5, 7, ] no tempo 182.0
+O processo 0 testou o processo 7 correto e adquire [1, 2, 3, 4, 5, 6, ] no tempo 182.0
+O processo 4 testou o processo 0 correto e adquire [3, ] no tempo 210.0
+O processo 4 testou o processo 5 correto e adquire [0, 3, ] no tempo 210.0
+O processo 4 testou o processo 6 correto e adquire [0, 3, ] no tempo 210.0
+O processo 5 testou o processo 1 falho no tempo 210.0
+O processo 5 testou o processo 4 correto e adquire [3, ] no tempo 210.0
+O processo 5 testou o processo 7 correto e adquire [0, ] no tempo 210.0
+O processo 6 testou o processo 2 falho no tempo 210.0
+O processo 6 testou o processo 4 correto e adquire [3, ] no tempo 210.0
+O processo 6 testou o processo 7 correto e adquire [0, ] no tempo 210.0
+O processo 7 testou o processo 3 falho no tempo 210.0
+O processo 7 testou o processo 5 correto e adquire [] no tempo 210.0
+O processo 7 testou o processo 6 correto e adquire [] no tempo 210.0
+O processo 0 testou o processo 1 falho no tempo 212.0
+O processo 0 testou o processo 2 falho no tempo 212.0
+O processo 0 testou o processo 3 falho no tempo 212.0
+O processo 0 testou o processo 4 correto e adquire [3, ] no tempo 212.0
+O processo 0 testou o processo 5 correto e adquire [] no tempo 212.0
+O processo 0 testou o processo 6 correto e adquire [] no tempo 212.0
+O processo 0 testou o processo 7 correto e adquire [] no tempo 212.0
+O processo 4 testou o processo 0 correto e adquire [] no tempo 240.0
+O processo 4 testou o processo 5 correto e adquire [] no tempo 240.0
+O processo 4 testou o processo 6 correto e adquire [] no tempo 240.0
+O processo 5 testou o processo 1 falho no tempo 240.0
+O processo 5 testou o processo 4 correto e adquire [] no tempo 240.0
+O processo 5 testou o processo 7 correto e adquire [] no tempo 240.0
+O processo 6 testou o processo 2 falho no tempo 240.0
+O processo 6 testou o processo 4 correto e adquire [] no tempo 240.0
+O processo 6 testou o processo 7 correto e adquire [] no tempo 240.0
+O processo 7 testou o processo 3 falho no tempo 240.0
+O processo 7 testou o processo 5 correto e adquire [] no tempo 240.0
+O processo 7 testou o processo 6 correto e adquire [] no tempo 240.0
+O processo 0 testou o processo 1 falho no tempo 242.0
+O processo 0 testou o processo 2 falho no tempo 242.0
+O processo 0 testou o processo 3 falho no tempo 242.0
+O processo 0 testou o processo 4 correto e adquire [] no tempo 242.0
+O processo 0 testou o processo 5 correto e adquire [] no tempo 242.0
+O processo 0 testou o processo 6 correto e adquire [] no tempo 242.0
+O processo 0 testou o processo 7 correto e adquire [] no tempo 242.0
+O processo 4 testou o processo 0 correto e adquire [] no tempo 270.0
+O processo 4 testou o processo 5 correto e adquire [] no tempo 270.0
+O processo 4 testou o processo 6 correto e adquire [] no tempo 270.0
